@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "eslint:recommended", "next",
+    "plugin:storybook/recommended",
+    "plugin:@stylistic/recommended-extends",
+    "plugin:jest/recommended"
+  ],
+  "plugins": ["jest"],
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "@stylistic/indent": ["error", 2]
+  }
+}
