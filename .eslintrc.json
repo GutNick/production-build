@@ -3,13 +3,51 @@
     "eslint:recommended", "next",
     "plugin:storybook/recommended",
     "plugin:@stylistic/recommended-extends",
-    "plugin:jest/recommended"
+    "plugin:jest/recommended",
+    "plugin:jsdoc/recommended-typescript"
   ],
-  "plugins": ["jest"],
+  "plugins": ["jest", "simple-import-sort"],
   "env": {
     "jest": true
   },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": "latest"
+  },
   "rules": {
-    "@stylistic/indent": ["error", 2]
+    "@stylistic/indent": ["error", 2],
+    "jsdoc/tag-lines": ["off"],
+    "jsdoc/require-jsdoc": [
+      "error",
+      {
+        "require": {
+          "ArrowFunctionExpression": true,
+          "ClassDeclaration": true,
+          "FunctionDeclaration": true,
+          "FunctionExpression": true,
+          "MethodDefinition": true
+        }
+      }
+    ],
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          // Packages `react` related packages come first.
+          ["^next", "^react", "^@?\\w"],
+          // Internal packages.
+          ["^(@)(/.*|$)"],
+          // Side effect imports.
+          ["^\\u0000"],
+          // Parent imports. Put `..` last.
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          // Other relative imports. Put same-folder imports and `.` last.
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          // Style imports.
+          ["^.+\\.?(css)$"]
+        ]
+      }
+    ],
+    "simple-import-sort/exports": "error"
   }
 }

@@ -1,7 +1,5 @@
-.button {
-    padding: 10px;
+.Button {
+    --var: "flex";
 
-    &__title {
-        color: red;
-    }
+    cursor: pointer;
 }
