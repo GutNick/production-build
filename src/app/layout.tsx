@@ -4,7 +4,7 @@ import React from 'react'
 
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: [ 'latin' ] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',

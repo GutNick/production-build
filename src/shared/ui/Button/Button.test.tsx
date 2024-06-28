@@ -5,6 +5,9 @@ import { Button } from './Button'
 test('calls onClick prop when clicked', () => {
   const handleClick = jest.fn()
   render(<Button onClick={handleClick}>Click Me</Button>)
-  fireEvent.click(screen.getByText(/click me/i))
-  expect(handleClick).toHaveBeenCalledTimes(1)
+  const clickEventsCount = 10
+  for (let i = 0; i < clickEventsCount; i++) {
+    fireEvent.click(screen.getByText(/click me/i))
+  }
+  expect(handleClick).toHaveBeenCalledTimes(clickEventsCount)
 })
